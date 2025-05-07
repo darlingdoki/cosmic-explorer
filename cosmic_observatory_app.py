@@ -12,10 +12,7 @@ st.set_page_config(page_title="Cosmic Explorer", layout="wide")
 
 
 # --- Optional Logo (centered telescope) ---
-st.image(
-    "https://raw.githubusercontent.com/edent/SuperTinyIcons/master/images/svg/telescope.png",
-    width=100
-)
+
 
 
 

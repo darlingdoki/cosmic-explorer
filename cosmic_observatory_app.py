@@ -9,11 +9,11 @@ import io
 st.set_page_config(page_title="Cosmic Explorer", layout="wide")
 
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
-    "🔭 Cosmology Calculator",
-    "📏 Galaxy Size",
-    "📈 Graphs",
-    "📄 Export",
-    "🧪 More Tools"
+    "Cosmology Calculator",
+    "Galaxy Size",
+    " Graphs",
+    " Export",
+    " More Tools"
 ])
 
 # --- Add Banner Image (top-of-page full-width Hubble image) ---

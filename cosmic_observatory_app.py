@@ -8,6 +8,8 @@ import io
 # --- Page Setup ---
 st.set_page_config(page_title="Cosmic Explorer", layout="wide")
 
+# -- GENUINELY have no idea why this isn't working, tabs aren't being updated. adjust spacing to liking and tix tabs 1 and 2. 3,4 and 5 haven't been added yet
+
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
     "Cosmology Calculator",
     "Galaxy Size",

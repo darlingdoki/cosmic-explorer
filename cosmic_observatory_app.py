@@ -10,8 +10,8 @@ st.set_page_config(page_title="Cosmic Explorer", layout="wide")
 
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
     "🔭 Cosmology Calculator",
-    "📈 Graphs",
     "📏 Galaxy Size",
+    "📈 Graphs",
     "📄 Export",
     "🧪 More Tools"
 ])
@@ -68,63 +68,65 @@ st.markdown(f"- **Luminosity Distance:** {luminosity:.2f} Mpc")
 
 
 # --- 📏 Galaxy Size Calculator ---
-st.markdown("---")
-st.header("📏 Galaxy Size Calculator (Angular → Physical Size)")
+with tab2:
+    st.markdown("---")
+    st.header("📏 Galaxy Size Calculator (Angular → Physical Size)")
 
-# Input: Angular size in arcseconds
-theta_arcsec = st.number_input("Angular size (arcseconds)", min_value=0.0, value=30.0, step=1.0)
+    # Input: Angular size in arcseconds
+    theta_arcsec = st.number_input("Angular size (arcseconds)", min_value=0.0, value=30.0, step=1.0)
 
-# Input: Unit toggle
-unit_choice = st.radio("Display physical size in:", ("kpc", "light-years", "both"))
+    # Input: Unit toggle
+    unit_choice = st.radio("Display physical size in:", ("kpc", "light-years", "both"))
 
-# Calculation
-theta_rad = theta_arcsec * (np.pi / (180 * 3600))  # arcsec to radians
-size_kpc = angular * 1000 * theta_rad  # angular is in Mpc → *1000 to kpc
-size_ly = size_kpc * 3261.56  # 1 kpc ≈ 3261.56 light-years
+    # Calculation
+    theta_rad = theta_arcsec * (np.pi / (180 * 3600))  # arcsec to radians
+    size_kpc = angular * 1000 * theta_rad  # angular is in Mpc → *1000 to kpc
+    size_ly = size_kpc * 3261.56  # 1 kpc ≈ 3261.56 light-years
 
-# Output
-st.subheader("🪐 Estimated Physical Size")
+    # Output
+    st.subheader("🪐 Estimated Physical Size")
 
-if unit_choice == "kpc":
-    st.markdown(f"- **Size**: {size_kpc:.2f} kiloparsecs")
-elif unit_choice == "light-years":
-    st.markdown(f"- **Size**: {size_ly:.2f} light-years")
-else:
-    st.markdown(f"- **Size**: {size_kpc:.2f} kpc ≈ {size_ly:.2f} light-years")
+    if unit_choice == "kpc":
+        st.markdown(f"- **Size**: {size_kpc:.2f} kiloparsecs")
+    elif unit_choice == "light-years":
+        st.markdown(f"- **Size**: {size_ly:.2f} light-years")
+    else:
+        st.markdown(f"- **Size**: {size_kpc:.2f} kpc ≈ {size_ly:.2f} light-years")
 
-# --- Save Galaxy Size Result ---
-import io
+    # --- Save Galaxy Size Result ---
+    import io
 
-# Create a simple text or CSV string
-if unit_choice == "kpc":
-    size_result = f"{size_kpc:.2f} kpc"
-elif unit_choice == "light-years":
-    size_result = f"{size_ly:.2f} light-years"
-else:
-    size_result = f"{size_kpc:.2f} kpc ≈ {size_ly:.2f} light-years"
+    # Create a simple text or CSV string
+    if unit_choice == "kpc":
+        size_result = f"{size_kpc:.2f} kpc"
+    elif unit_choice == "light-years":
+        size_result = f"{size_ly:.2f} light-years"
+    else:
+        size_result = f"{size_kpc:.2f} kpc ≈ {size_ly:.2f} light-years"
 
-save_text = f"""Galaxy Size Calculation
------------------------
-Redshift (z): {z:.2f}
-Angular Size: {theta_arcsec:.2f} arcseconds
-Physical Size: {size_result}
-"""
+    save_text = f"""Galaxy Size Calculation
+    -----------------------
+    Redshift (z): {z:.2f}
+    Angular Size: {theta_arcsec:.2f} arcseconds
+    Physical Size: {size_result}
+    """
 
-# Convert to bytes for download
-buffer = io.BytesIO()
-buffer.write(save_text.encode())
-buffer.seek(0)
+    # Convert to bytes for download
+    buffer = io.BytesIO()
+    buffer.write(save_text.encode())
+    buffer.seek(0)
 
-# Download button
-st.download_button(
-    label="💾 Save Galaxy Size Result",
-    data=buffer,
-    file_name="galaxy_size.txt",
-    mime="text/plain"
-)
+    # Download button
+    st.download_button(
+        label="💾 Save Galaxy Size Result",
+        data=buffer,
+        file_name="galaxy_size.txt",
+        mime="text/plain"
+    )
 
 # --- Lookback Time Graph ---
 # --- Lookback Time Plot ---
+with tab3:
 st.markdown("---")
 st.header("⏳ Lookback Time vs Redshift")
 

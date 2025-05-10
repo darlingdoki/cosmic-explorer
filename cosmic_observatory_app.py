@@ -129,32 +129,32 @@ with tab2:
 # --- Lookback Time Graph ---
 # --- Lookback Time Plot ---
 with tab3:
-st.markdown("---")
-st.header("⏳ Lookback Time vs Redshift")
+    st.markdown("---")
+    st.header("⏳ Lookback Time vs Redshift")
 
-z_range = np.linspace(0.01, 10, 500)
-lookback_range = cosmo.lookback_time(z_range).value
+    z_range = np.linspace(0.01, 10, 500)
+    lookback_range = cosmo.lookback_time(z_range).value
 
-fig1, ax1 = plt.subplots()
-ax1.plot(z_range, lookback_range)
-ax1.set_xlabel("Redshift (z)")
-ax1.set_ylabel("Lookback Time (Gyr)")
-ax1.grid(True)
-ax1.set_title("Lookback Time vs Redshift")
-st.pyplot(fig1)
+    fig1, ax1 = plt.subplots()
+    ax1.plot(z_range, lookback_range)
+    ax1.set_xlabel("Redshift (z)")
+    ax1.set_ylabel("Lookback Time (Gyr)")
+    ax1.grid(True)
+    ax1.set_title("Lookback Time vs Redshift")
+    st.pyplot(fig1)
 
-# Save PNG to buffer
-lookback_buf = io.BytesIO()
-fig1.savefig(lookback_buf, format="png")
-lookback_buf.seek(0)
+    # Save PNG to buffer
+    lookback_buf = io.BytesIO()
+    fig1.savefig(lookback_buf, format="png")
+    lookback_buf.seek(0)
 
-# Download Button
-st.download_button(
-    label="💾 Save Lookback Time Graph as PNG",
-    data=lookback_buf,
-    file_name="lookback_time.png",
-    mime="image/png"
-)
+    # Download Button
+    st.download_button(
+        label="💾 Save Lookback Time Graph as PNG",
+        data=lookback_buf,
+        file_name="lookback_time.png",
+        mime="image/png"
+    )
 
 
 # --- Distance Graph ---

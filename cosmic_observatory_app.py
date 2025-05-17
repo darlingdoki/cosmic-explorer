@@ -157,83 +157,84 @@ with tab3:
     )
 
 
-# --- Distance Graph ---
-# --- Distance Plot ---
-st.markdown("---")
-st.header("📏 Distances vs Redshift")
+    # --- Distance Graph ---
+    # --- Distance Plot ---
+    st.markdown("---")
+    st.header("📏 Distances vs Redshift")
 
-com = cosmo.comoving_distance(z_range).value / 1000
-ang = cosmo.angular_diameter_distance(z_range).value / 1000
-lum = cosmo.luminosity_distance(z_range).value / 1000
+    com = cosmo.comoving_distance(z_range).value / 1000
+    ang = cosmo.angular_diameter_distance(z_range).value / 1000
+    lum = cosmo.luminosity_distance(z_range).value / 1000
 
-fig2, ax2 = plt.subplots()
-ax2.plot(z_range, com, label="Comoving (Glyr)")
-ax2.plot(z_range, ang, label="Angular Diameter (Glyr)")
-ax2.plot(z_range, lum, label="Luminosity (Glyr)")
-ax2.set_xlabel("Redshift (z)")
-ax2.set_ylabel("Distance (Glyr)")
-ax2.legend()
-ax2.grid(True)
-ax2.set_title("Distances vs Redshift")
-st.pyplot(fig2)
+    fig2, ax2 = plt.subplots()
+    ax2.plot(z_range, com, label="Comoving (Glyr)")
+    ax2.plot(z_range, ang, label="Angular Diameter (Glyr)")
+    ax2.plot(z_range, lum, label="Luminosity (Glyr)")
+    ax2.set_xlabel("Redshift (z)")
+    ax2.set_ylabel("Distance (Glyr)")
+    ax2.legend()
+    ax2.grid(True)
+    ax2.set_title("Distances vs Redshift")
+    st.pyplot(fig2)
 
-# Save PNG to buffer
-distance_buf = io.BytesIO()
-fig2.savefig(distance_buf, format="png")
-distance_buf.seek(0)
+    # Save PNG to buffer
+    distance_buf = io.BytesIO()
+    fig2.savefig(distance_buf, format="png")
+    distance_buf.seek(0)
 
-# Download Button
-st.download_button(
-    label="💾 Save Distance Graph as PNG",
-    data=distance_buf,
-    file_name="distances_vs_redshift.png",
-    mime="image/png"
-)
+    # Download Button
+    st.download_button(
+        label="💾 Save Distance Graph as PNG",
+        data=distance_buf,
+        file_name="distances_vs_redshift.png",
+        mime="image/png"
+    )
 
 # --- 📄 Summary Report Exporter ---
-st.markdown("---")
-st.header("📄 Export Summary Report")
+with tab4:
+    st.markdown("---")
+    st.header("📄 Export Summary Report")
 
-# Recompute galaxy size in both units
-theta_rad = theta_arcsec * (np.pi / (180 * 3600))
-size_kpc = angular * 1000 * theta_rad
-size_ly = size_kpc * 3261.56
+    # Recompute galaxy size in both units
+    theta_rad = theta_arcsec * (np.pi / (180 * 3600))
+    size_kpc = angular * 1000 * theta_rad
+    size_ly = size_kpc * 3261.56
 
-# Generate report text
-report = f"""
-Cosmic Explorer Summary Report
-------------------------------
-Cosmology Inputs:
-- Hubble Constant (H₀): {H0} km/s/Mpc
-- Matter Density (Ωₘ): {Om0}
-- Dark Energy Density (ΩΛ): {Ol0}
-- Redshift (z): {z}
+    # Generate report text
+    report = f"""
+    Cosmic Explorer Summary Report
+    ------------------------------
+    Cosmology Inputs:
+    - Hubble Constant (H₀): {H0} km/s/Mpc
+    - Matter Density (Ωₘ): {Om0}
+    - Dark Energy Density (ΩΛ): {Ol0}
+    - Redshift (z): {z}
 
-Cosmology Results:
-- Current Age of Universe: {age:.2f} Gyr
-- Age at z = {z:.2f}: {age_z:.2f} Gyr
-- Lookback Time: {lookback:.2f} Gyr
-- Comoving Distance: {comoving:.2f} Mpc
-- Angular Diameter Distance: {angular:.2f} Mpc
-- Luminosity Distance: {luminosity:.2f} Mpc
+    Cosmology Results:
+    - Current Age of Universe: {age:.2f} Gyr
+    - Age at z = {z:.2f}: {age_z:.2f} Gyr
+    - Lookback Time: {lookback:.2f} Gyr
+    - Comoving Distance: {comoving:.2f} Mpc
+    - Angular Diameter Distance: {angular:.2f} Mpc
+    - Luminosity Distance: {luminosity:.2f} Mpc
 
-Galaxy Size Calculation:
-- Angular Size: {theta_arcsec:.2f} arcseconds
-- Physical Size: {size_kpc:.2f} kpc ≈ {size_ly:.2f} light-years
-"""
+    Galaxy Size Calculation:
+    - Angular Size: {theta_arcsec:.2f} arcseconds
+    - Physical Size: {size_kpc:.2f} kpc ≈ {size_ly:.2f} light-years
+    """
 
-# Convert to downloadable buffer
-report_buf = io.BytesIO()
-report_buf.write(report.encode())
-report_buf.seek(0)
+    # Convert to downloadable buffer
+    report_buf = io.BytesIO()
+    report_buf.write(report.encode())
+    report_buf.seek(0)
 
-# Download button
-st.download_button(
-    label="📄 Download Summary Report",
-    data=report_buf,
-    file_name="cosmic_summary.txt",
-    mime="text/plain"
-)
+    # Download button
+    st.download_button(
+        label="📄 Download Summary Report",
+        data=report_buf,
+        file_name="cosmic_summary.txt",
+        mime="text/plain"
+    )
 
 st.markdown("##### Made with ❤️ by Bri · Powered by Streamlit + Astropy")
 

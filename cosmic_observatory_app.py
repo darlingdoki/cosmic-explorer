@@ -10,12 +10,13 @@ st.set_page_config(page_title="Cosmic Explorer", layout="wide")
 
 # -- GENUINELY have no idea why this isn't working, tabs aren't being updated. adjust spacing to liking and tix tabs 1 and 2. 3,4 and 5 haven't been added yet
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
+    "Home",
     "Cosmology Calculator",
     "Galaxy Size",
-    " Graphs",
-    " Export",
-    " More Tools"
+    "Graphs",
+    "Export",
+    "More Tools"
 ])
 
 # --- Add Banner Image (top-of-page full-width Hubble image) ---
@@ -28,11 +29,12 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 
 
 # --- Title and Subtitle ---
-st.markdown("""
-# 🌌 **Cosmic Explorer Observatory Toolbox**
-##### 🧠 Real-Time Cosmology Calculator · Galaxy Size Estimator · Distance Grapher
----
-""")
+with tab1:
+    st.markdown("""
+    # 🌌 **Cosmic Explorer Observatory Toolbox**
+    ##### 🧠 Real-Time Cosmology Calculator · Galaxy Size Estimator · Distance Grapher
+    ---
+    """)
 
 # --- REMOVE WHEN FIXED: Banners and Logo don't work; remove or fix
 
@@ -51,7 +53,7 @@ z = st.sidebar.slider("Redshift (z)", 0.0, 10.0, 2.0,
 cosmo = FlatLambdaCDM(H0=H0 * u.km / u.s / u.Mpc, Om0=Om0)
 
 # --- Cosmology Outputs ---
-with tab1:
+with tab2:
   
   age = cosmo.age(0).value
   age_z = cosmo.age(z).value
@@ -70,7 +72,7 @@ st.markdown(f"- **Luminosity Distance:** {luminosity:.2f} Mpc")
 
 
 # --- 📏 Galaxy Size Calculator ---
-with tab2:
+with tab3:
     st.markdown("---")
     st.header("📏 Galaxy Size Calculator (Angular → Physical Size)")
 
@@ -128,7 +130,7 @@ with tab2:
 
 # --- Lookback Time Graph ---
 # --- Lookback Time Plot ---
-with tab3:
+with tab4:
     st.markdown("---")
     st.header("⏳ Lookback Time vs Redshift")
 
@@ -191,7 +193,7 @@ with tab3:
     )
 
 # --- 📄 Summary Report Exporter ---
-with tab4:
+with tab5:
     st.markdown("---")
     st.header("📄 Export Summary Report")
 
@@ -236,5 +238,6 @@ with tab4:
         mime="text/plain"
     )
 
-st.markdown("##### Made with ❤️ by Bri · Powered by Streamlit + Astropy")
+with tab1:
+    st.markdown("##### Made with ❤️ by Bri · Powered by Streamlit + Astropy")
 

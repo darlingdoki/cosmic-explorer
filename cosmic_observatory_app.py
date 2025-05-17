@@ -54,13 +54,13 @@ cosmo = FlatLambdaCDM(H0=H0 * u.km / u.s / u.Mpc, Om0=Om0)
 
 # --- Cosmology Outputs ---
 with tab2: 
-  age = cosmo.age(0).value
-  age_z = cosmo.age(z).value
-  lookback = cosmo.lookback_time(z).value
-  comoving = cosmo.comoving_distance(z).value
-  angular = cosmo.angular_diameter_distance(z).value
-  luminosity = cosmo.luminosity_distance(z).value
-
+    age = cosmo.age(0).value
+    age_z = cosmo.age(z).value
+    lookback = cosmo.lookback_time(z).value
+    comoving = cosmo.comoving_distance(z).value
+    angular = cosmo.angular_diameter_distance(z).value
+    luminosity = cosmo.luminosity_distance(z).value
+   
     st.header("🧮 Cosmology Outputs")
     st.markdown(f"- **Age of Universe now:** {age:.2f} Gyr")
     st.markdown(f"- **Age at z={z:.2f}:** {age_z:.2f} Gyr")

@@ -35,7 +35,7 @@ with tab1:
     ##### 🧠 Real-Time Cosmology Calculator · Galaxy Size Estimator · Distance Grapher
     ---
     """)
-
+# --------------------------- ADD INFORMATIONAL PAGE AS PART OF HOME (TAB 1) --------------------------
 # --- REMOVE WHEN FIXED: Banners and Logo don't work; remove or fix
 
 # --- Sidebar Sliders ---
@@ -53,8 +53,7 @@ z = st.sidebar.slider("Redshift (z)", 0.0, 10.0, 2.0,
 cosmo = FlatLambdaCDM(H0=H0 * u.km / u.s / u.Mpc, Om0=Om0)
 
 # --- Cosmology Outputs ---
-with tab2:
-  
+with tab2: 
   age = cosmo.age(0).value
   age_z = cosmo.age(z).value
   lookback = cosmo.lookback_time(z).value
@@ -62,13 +61,13 @@ with tab2:
   angular = cosmo.angular_diameter_distance(z).value
   luminosity = cosmo.luminosity_distance(z).value
 
-st.header("🧮 Cosmology Outputs")
-st.markdown(f"- **Age of Universe now:** {age:.2f} Gyr")
-st.markdown(f"- **Age at z={z:.2f}:** {age_z:.2f} Gyr")
-st.markdown(f"- **Lookback Time:** {lookback:.2f} Gyr")
-st.markdown(f"- **Comoving Distance:** {comoving:.2f} Mpc")
-st.markdown(f"- **Angular Diameter Distance:** {angular:.2f} Mpc")
-st.markdown(f"- **Luminosity Distance:** {luminosity:.2f} Mpc")
+    st.header("🧮 Cosmology Outputs")
+    st.markdown(f"- **Age of Universe now:** {age:.2f} Gyr")
+    st.markdown(f"- **Age at z={z:.2f}:** {age_z:.2f} Gyr")
+    st.markdown(f"- **Lookback Time:** {lookback:.2f} Gyr")
+    st.markdown(f"- **Comoving Distance:** {comoving:.2f} Mpc")
+    st.markdown(f"- **Angular Diameter Distance:** {angular:.2f} Mpc")
+    st.markdown(f"- **Luminosity Distance:** {luminosity:.2f} Mpc")
 
 
 # --- 📏 Galaxy Size Calculator ---

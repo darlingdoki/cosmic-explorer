@@ -62,14 +62,14 @@ with tab1:
     """)
     st.markdown("""
     **What You Can Do:**
-    # ✩ˊ˗ Use the **sidebar** sliders to set cosmology values and redshift
-    # ✩ˊ˗ Explore each **tab** to access calculators, graphs, and descriptions
-    # ✩ˊ˗ In the **More Tools** tab, interact with advanced features like:
-       # - Scale factor visualization
-       # - Expansion history plotting
-       # - Time since Big Bang
-       # - Light travel distance
-    # ✩ˊ˗ Utilize export function to download and save graphs or summary reports⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ###### ✩ˊ˗ Use the **sidebar** sliders to set cosmology values and redshift
+    ###### ✩ˊ˗ Explore each **tab** to access calculators, graphs, and descriptions
+    ###### ✩ˊ˗ In the **More Tools** tab, interact with advanced features like:
+       ###### - Scale factor visualization
+       ###### - Expansion history plotting
+       ###### - Time since Big Bang
+       ###### - Light travel distance
+    ###### ✩ˊ˗ Utilize export function to download and save graphs or summary reports⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
     """)
 # --------------------------- ADD INFORMATIONAL PAGE AS PART OF HOME (TAB 1) --------------------------
 # --- REMOVE WHEN FIXED: Banners and Logo don't work; remove or fix

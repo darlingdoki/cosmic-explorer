@@ -191,6 +191,38 @@ with tab4:
         mime="image/png"
     )
 
+     # 📈 Expansion History Plot
+    st.subheader("📈 Expansion History")
+    st.markdown("""
+    This graph shows how the **scale factor** (size of the universe) has changed over time.
+    - The universe expands faster as it gets older
+    - Early on, expansion was slower due to gravity's influence
+    """)
+    z_exp = np.linspace(0.01, 10, 500)
+    t_exp = cosmo.age(z_exp).value
+    a_exp = 1 / (1 + z_exp)
+
+    fig_exp, ax_exp = plt.subplots()
+    sc = ax_exp.scatter(t_exp, a_exp, c=z_exp, cmap='plasma', s=10)
+    ax_exp.set_xlabel("Time Since Big Bang (Gyr)")
+    ax_exp.set_ylabel("Scale Factor (a)")
+    ax_exp.set_title("Expansion History of the Universe")
+    ax_exp.grid(True)
+    cbar = plt.colorbar(sc, ax=ax_exp, label="Redshift (z)")
+    st.pyplot(fig_exp)
+
+    # 💾 Save Expansion History Graph
+    expansion_buf = io.BytesIO()
+    fig_exp.savefig(expansion_buf, format="png")
+    expansion_buf.seek(0)
+
+    st.download_button(
+        label="💾 Download Expansion History Graph (PNG)",
+        data=expansion_buf,
+        file_name="expansion_history.png",
+        mime="image/png"
+    )
+
 # --- 📄 Summary Report Exporter ---
 with tab5:
     st.markdown("---")
@@ -236,6 +268,85 @@ with tab5:
         file_name="cosmic_summary.txt",
         mime="text/plain"
     )
+
+with tab6:
+    st.header("🧪 More Tools")
+    st.subheader("📅 Cosmic Time at Redshift")
+
+    # Age of universe at z is already computed!
+    st.write(f"At redshift z = {z:.2f}, the universe was approximately **{age_z:.2f} Gyr** old.")
+
+    # 🔭 Independent redshift slider
+    st.markdown("Adjust the redshift independently of the main app:")
+    z_tools = st.slider("Select redshift (z)", 0.01, 10.0, 2.0, step=0.01)
+
+    # 📉 Scale Factor
+    st.subheader("📉 Scale Factor (a)")
+    st.markdown("""
+    The **scale factor** `a = 1 / (1 + z)` tells us how much the universe has expanded.
+    - At `a = 1`, the universe is at its current size.
+    - At `a = 0.5`, the universe was half as large as it is now.
+    """)
+    a_tools = 1 / (1 + z_tools)
+    st.write(f"At redshift **z = {z_tools:.2f}**, the scale factor was **a = {a_tools:.4f}**")
+
+    # ⌛ Time Since Big Bang
+    st.subheader("⌛ Time Since the Big Bang")
+    st.markdown("""
+    This is how much time had passed since the Big Bang at a given redshift.
+    It decreases as you go further back in time (higher `z`).
+    """)
+    age_at_z_tools = cosmo.age(z_tools).value
+    st.write(f"At redshift **z = {z_tools:.2f}**, the universe was approximately **{age_at_z_tools:.2f} Gyr** old.")
+
+    # 📈 Expansion History Plot
+    st.subheader("📈 Expansion History")
+    st.markdown("""
+    This graph shows how the **scale factor** (size of the universe) has changed over time.
+    - The universe expands faster as it gets older
+    - Early on, expansion was slower due to gravity's influence
+    """)
+    z_exp = np.linspace(0.01, 10, 500)
+    t_exp = cosmo.age(z_exp).value
+    a_exp = 1 / (1 + z_exp)
+
+    fig_exp, ax_exp = plt.subplots()
+    sc = ax_exp.scatter(t_exp, a_exp, c=z_exp, cmap='plasma', s=10)
+    ax_exp.set_xlabel("Time Since Big Bang (Gyr)")
+    ax_exp.set_ylabel("Scale Factor (a)")
+    ax_exp.set_title("Expansion History of the Universe")
+    ax_exp.grid(True)
+    cbar = plt.colorbar(sc, ax=ax_exp, label="Redshift (z)")
+    st.pyplot(fig_exp)
+
+    # 🌌 Universe Timeline Summary
+    st.subheader("🌌 Universe Timeline Summary")
+    st.markdown("""
+    | Time After Big Bang | Event |
+    |---------------------|------------------------------|
+    | ~0 s                | Big Bang Singularity         |
+    | ~10⁻³⁵ s            | Inflation begins             |
+    | ~10⁻⁶ s             | Quarks form protons/neutrons |
+    | ~3 minutes          | Nucleosynthesis (H, He)      |
+    | ~380,000 years      | Recombination / CMB released |
+    | ~100 million years  | First stars form             |
+    | ~1 billion years    | First galaxies               |
+    | ~13.8 billion years | Today                        |
+    """)
+
+# 🚀 Light Travel Distance
+st.subheader("🚀 Light Travel Distance")
+st.markdown("""
+This is the distance light has traveled from an object at redshift `z` to reach us today.
+It's often slightly **less** than the comoving distance.
+""")
+
+light_travel_time = cosmo.lookback_time(z_tools).value  # in Gyr
+light_travel_distance_mpc = light_travel_time * 0.306601  # 1 Gyr ~ 0.306601 Mpc (speed of light)
+
+st.write(f"At redshift **z = {z_tools:.2f}**, light has traveled approximately:")
+st.write(f"- **{light_travel_time:.2f} billion years (Gyr)**")
+st.write(f"- **{light_travel_distance_mpc:.2f} megaparsecs (Mpc)**")
 
 with tab1:
     st.markdown("##### Made with ❤️ by Bri · Powered by Streamlit + Astropy")

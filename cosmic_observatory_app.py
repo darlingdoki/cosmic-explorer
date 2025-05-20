@@ -34,9 +34,9 @@ with tab1:
     # **Cosmic Explorer Observatory Toolbox ᯓ★**
     """)
     st.subheader("Real-Time Cosmology Calculator · Galaxy Size Estimator · Distance Grapher · Redshift Scale")
-    st.markdown("────୨ৎ────")
+    st.markdown("˚　　　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆.  .   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　　　.　　. 　 ˚　.　　　　 　　 　　　　 ✦")
     st.markdown("""
-    ##### ✧˖°. Built for students, scientists, dreamers, and stargazers ✧˖°.
+    ##### ⋆˙⟡ Built for students, scientists, dreamers, and stargazers ✧˖°.
     ##### This interactive app lets you explore the expansion of the universe using real cosmological tools. Enter a redshift, adjust the Hubble Constant, and instantly view distances, lookback time, and galaxy size.
     """)
     st.markdown("""

@@ -32,8 +32,21 @@ tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
 with tab1:
     st.markdown("""
     # **Cosmic Explorer Observatory Toolbox**
-    ##### Real-Time Cosmology Calculator · Galaxy Size Estimator · Distance Grapher
+    ##### Real-Time Cosmology Calculator · Galaxy Size Estimator · Distance Grapher · Redshift Scale
     ---
+    """)
+    st.subheader("Built for students, scientists, dreamers, and stargazers.")
+    st.subheader("This interactive app lets you explore the expansion of the universe using real cosmological tools. Enter a redshift, adjust the Hubble constant, and instantly view distances, loookback time, and galaxy size.")
+    st.markdown("""
+    **What You Can Do:**
+    - Use the **sidebar** sliders to set cosmology values and redshift
+    - Explore each **tab** to access calculators, graphs, and descriptions
+    - In the **More Tools** tab, interact with advanced features like:
+        - Scale factor visualization
+        - Expansion history plotting
+        - Time since Big Bang
+        - Light travel distance
+    - Utilize export function to download and save graphs or summary reports
     """)
 # --------------------------- ADD INFORMATIONAL PAGE AS PART OF HOME (TAB 1) --------------------------
 # --- REMOVE WHEN FIXED: Banners and Logo don't work; remove or fix
@@ -228,7 +241,6 @@ with tab4:
 
 # --- 📄 Summary Report Exporter ---
 with tab6:
-    st.markdown("---")
     st.header("Export Summary Report")
 
     # Recompute galaxy size in both units
@@ -273,7 +285,6 @@ with tab6:
     )
 
 with tab5:
-    st.header("More Tools")
     st.subheader("Cosmic Time at Redshift")
 
     # Age of universe at z is already computed!

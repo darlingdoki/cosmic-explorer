@@ -164,7 +164,7 @@ with tab4:
     st.header("📏 Distances vs Redshift")
     st.markdown("""
     Comparing the distance and redshift shows us the **how much light from distant galaxies has been stretched (z) due to cosmic expansion in relation to distance.**
-    - Comoving Distance is the fixed present day distance to an object (ignores expansion after light left).
+    - **Comoving Distance** is the fixed present day distance to an object (ignores expansion after light left).
     - Angular Diameter Distance matches how an object's size appears on the sky.
     - Luminosity Distance is an inferred distance from how dim an object appears.
     """)

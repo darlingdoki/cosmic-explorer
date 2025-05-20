@@ -370,5 +370,5 @@ with tab5:
     st.write(f"- **{light_travel_distance_mpc:.2f} megaparsecs (Mpc)**")
 
 with tab1:
-    st.markdown("##### Made with ❤️ by Bri · Powered by Streamlit + Astropy")
+    st.markdown("##### Made with love and light, by Bri · Powered by Streamlit + Astropy + Matplotlib + NumPy")
 

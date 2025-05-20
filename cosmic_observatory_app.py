@@ -31,8 +31,8 @@ tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
 # --- Title and Subtitle ---
 with tab1:
     st.markdown("""
-    # 🌌 **Cosmic Explorer Observatory Toolbox**
-    ##### 🧠 Real-Time Cosmology Calculator · Galaxy Size Estimator · Distance Grapher
+    # **Cosmic Explorer Observatory Toolbox**
+    ##### Real-Time Cosmology Calculator · Galaxy Size Estimator · Distance Grapher
     ---
     """)
 # --------------------------- ADD INFORMATIONAL PAGE AS PART OF HOME (TAB 1) --------------------------
@@ -61,7 +61,7 @@ with tab2:
     angular = cosmo.angular_diameter_distance(z).value
     luminosity = cosmo.luminosity_distance(z).value
    
-    st.header("🧮 Cosmology Outputs")
+    st.header("Cosmology Outputs")
     st.markdown(f"- **Age of Universe now:** {age:.2f} Gyr")
     st.markdown(f"- **Age at z={z:.2f}:** {age_z:.2f} Gyr")
     st.markdown(f"- **Lookback Time:** {lookback:.2f} Gyr")
@@ -73,7 +73,7 @@ with tab2:
 # --- 📏 Galaxy Size Calculator ---
 with tab3:
     st.markdown("---")
-    st.header("📏 Galaxy Size Calculator (Angular → Physical Size)")
+    st.header("Galaxy Size Calculator (Angular → Physical Size)")
 
     # Input: Angular size in arcseconds
     theta_arcsec = st.number_input("Angular size (arcseconds)", min_value=0.0, value=30.0, step=1.0)
@@ -87,7 +87,7 @@ with tab3:
     size_ly = size_kpc * 3261.56  # 1 kpc ≈ 3261.56 light-years
 
     # Output
-    st.subheader("🪐 Estimated Physical Size")
+    st.subheader("Estimated Physical Size")
 
     if unit_choice == "kpc":
         st.markdown(f"- **Size**: {size_kpc:.2f} kiloparsecs")
@@ -130,8 +130,7 @@ with tab3:
 # --- Lookback Time Graph ---
 # --- Lookback Time Plot ---
 with tab4:
-    st.markdown("---")
-    st.header("⏳ Lookback Time vs Redshift")
+    st.subheader("Lookback Time vs Redshift")
 
     z_range = np.linspace(0.01, 10, 500)
     lookback_range = cosmo.lookback_time(z_range).value
@@ -159,14 +158,13 @@ with tab4:
 
 
     # --- Distance Graph ---
-    # --- Distance Plot ---
     st.markdown("---")
-    st.header("📏 Distances vs Redshift")
+    st.subheader("📏 Distances vs Redshift")
     st.markdown("""
     Comparing the distance and redshift shows us the **how much light from distant galaxies has been stretched (z) due to cosmic expansion in relation to distance.**
     - **Comoving Distance** is the fixed present day distance to an object (ignores expansion after light left).
-    - Angular Diameter Distance matches how an object's size appears on the sky.
-    - Luminosity Distance is an inferred distance from how dim an object appears.
+    - **Angular Diameter Distance** matches how an object's size appears on the sky.
+    - **Luminosity Distance** is an inferred distance from how dim an object appears.
     """)
     com = cosmo.comoving_distance(z_range).value / 1000
     ang = cosmo.angular_diameter_distance(z_range).value / 1000
@@ -197,7 +195,8 @@ with tab4:
     )
 
      # 📈 Expansion History Plot
-    st.subheader("📈 Expansion History")
+    st.markdown("---")
+    st.subheader("Expansion History")
     st.markdown("""
     This graph shows how the **scale factor** (size of the universe) has changed over time.
     - The universe expands faster as it gets older
@@ -231,7 +230,7 @@ with tab4:
 # --- 📄 Summary Report Exporter ---
 with tab5:
     st.markdown("---")
-    st.header("📄 Export Summary Report")
+    st.header("Export Summary Report")
 
     # Recompute galaxy size in both units
     theta_rad = theta_arcsec * (np.pi / (180 * 3600))
@@ -275,8 +274,8 @@ with tab5:
     )
 
 with tab6:
-    st.header("🧪 More Tools")
-    st.subheader("📅 Cosmic Time at Redshift")
+    st.header("More Tools")
+    st.subheader("Cosmic Time at Redshift")
 
     # Age of universe at z is already computed!
     st.write(f"At redshift z = {z:.2f}, the universe was approximately **{age_z:.2f} Gyr** old.")

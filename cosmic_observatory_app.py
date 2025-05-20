@@ -31,13 +31,13 @@ tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
 # --- Title and Subtitle ---
 with tab1:
     st.markdown("""
-    # **Cosmic Explorer Observatory Toolbox**
+    # **Cosmic Explorer Observatory Toolbox ᯓ★**
     """)
     st.subheader("Real-Time Cosmology Calculator · Galaxy Size Estimator · Distance Grapher · Redshift Scale")
-    st.markdown("---")
+    st.markdown("────୨ৎ────")
     st.markdown("""
-    ##### Built for students, scientists, dreamers, and stargazers. 
-    ##### This interactive app lets you explore the expansion of the universe using real cosmological tools. Enter a redshift, adjust the Hubble constant, and instantly view distances, loookback time, and galaxy size.
+    ##### ✧˖°. Built for students, scientists, dreamers, and stargazers ✧˖°.
+    ##### This interactive app lets you explore the expansion of the universe using real cosmological tools. Enter a redshift, adjust the Hubble Constant, and instantly view distances, lookback time, and galaxy size.
     """)
     st.markdown("""
     **What You Can Do:**

@@ -15,8 +15,8 @@ tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "Cosmology Calculator",
     "Galaxy Size",
     "Graphs",
-    "Export",
-    "More Tools"
+    "More Tools",
+    "Export"
 ])
 
 # --- Add Banner Image (top-of-page full-width Hubble image) ---
@@ -72,7 +72,6 @@ with tab2:
 
 # --- 📏 Galaxy Size Calculator ---
 with tab3:
-    st.markdown("---")
     st.header("Galaxy Size Calculator (Angular → Physical Size)")
 
     # Input: Angular size in arcseconds
@@ -159,7 +158,7 @@ with tab4:
 
     # --- Distance Graph ---
     st.markdown("---")
-    st.subheader("📏 Distances vs Redshift")
+    st.subheader("Distances vs Redshift")
     st.markdown("""
     Comparing the distance and redshift shows us the **how much light from distant galaxies has been stretched (z) due to cosmic expansion in relation to distance.**
     - **Comoving Distance** is the fixed present day distance to an object (ignores expansion after light left).
@@ -228,7 +227,7 @@ with tab4:
     )
 
 # --- 📄 Summary Report Exporter ---
-with tab5:
+with tab6:
     st.markdown("---")
     st.header("Export Summary Report")
 
@@ -273,7 +272,7 @@ with tab5:
         mime="text/plain"
     )
 
-with tab6:
+with tab5:
     st.header("More Tools")
     st.subheader("Cosmic Time at Redshift")
 
@@ -285,6 +284,7 @@ with tab6:
     z_tools = st.slider("Select redshift (z)", 0.01, 10.0, 2.0, step=0.01)
 
     # 📉 Scale Factor
+    st.markdown("---")
     st.subheader("Scale Factor (a)")
     st.markdown("""
     The **scale factor** `a = 1 / (1 + z)` tells us how much the universe has expanded.
@@ -295,6 +295,7 @@ with tab6:
     st.write(f"At redshift **z = {z_tools:.2f}**, the scale factor was **a = {a_tools:.4f}**")
 
     # ⌛ Time Since Big Bang
+    st.markdown("---")
     st.subheader("Time Since the Big Bang")
     st.markdown("""
     This is how much time had passed since the Big Bang at a given redshift.
@@ -304,6 +305,7 @@ with tab6:
     st.write(f"At redshift **z = {z_tools:.2f}**, the universe was approximately **{age_at_z_tools:.2f} Gyr** old.")
 
     # 🌌 Universe Timeline Summary
+    st.markdown("---")
     st.subheader("Universe Timeline Summary")
     st.markdown("""
     | Time After Big Bang | Event |
@@ -319,6 +321,7 @@ with tab6:
     """)
 
     # 🚀 Light Travel Distance
+    st.markdown("---")
     st.subheader("Light Travel Distance")
     st.markdown("""
     This is the distance light has traveled from an object at redshift `z` to reach us today.

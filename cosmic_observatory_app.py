@@ -97,7 +97,7 @@ with tab2:
     angular = cosmo.angular_diameter_distance(z).value
     luminosity = cosmo.luminosity_distance(z).value
    
-    st.header("Cosmology Outputs")
+    st.subheader("Cosmology Outputs")
     st.markdown(f"- **Age of Universe now:** {age:.2f} Gyr")
     st.markdown(f"- **Age at z={z:.2f}:** {age_z:.2f} Gyr")
     st.markdown(f"- **Lookback Time:** {lookback:.2f} Gyr")
@@ -108,7 +108,7 @@ with tab2:
 
 # --- 📏 Galaxy Size Calculator ---
 with tab3:
-    st.header("Galaxy Size Calculator (Angular → Physical Size)")
+    st.subheader("Galaxy Size Calculator (Angular → Physical Size)")
 
     # Input: Angular size in arcseconds
     theta_arcsec = st.number_input("Angular size (arcseconds)", min_value=0.0, value=30.0, step=1.0)

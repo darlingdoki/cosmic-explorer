@@ -100,7 +100,7 @@ with tab2:
     st.subheader("Cosmology Outputs")
     st.markdown(f"- **Age of Universe now:** {age:.2f} Gyr")
     st.markdown("""
-    ####### The Age of the Universe can be calculated with a simple formula: 1/H₀.
+    ### The Age of the Universe can be calculated with a simple formula: 1/H₀.
     ##### H₀ (Hubble's Constant) being 72km/s/Mpc. The calculation undergoes a series of conversions and is printed in Gyr(gigayear/one-billion years).
     """)
     st.markdown(f"- **Age at z={z:.2f}:** {age_z:.2f} Gyr")

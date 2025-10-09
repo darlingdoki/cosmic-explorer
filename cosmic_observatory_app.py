@@ -65,7 +65,7 @@ with tab1:
     ###### ✩ˊ˗ Use the **sidebar** sliders to set cosmology values and redshift
     ###### ✩ˊ˗ Explore each **tab** to access calculators, graphs, and descriptions
     ###### ✩ˊ˗ In the **More Tools** tab, interact with advanced features like:
-        ✧ Scale factor visualization
+    ✧ Scale factor visualization
         ✧ Expansion history plotting
         ✧ Time since Big Bang
         ✧ Light travel distance
@@ -377,5 +377,6 @@ with tab5:
 
 with tab1:
     st.markdown("##### Made with love and light, by Bri · Powered by Streamlit + Astropy + Matplotlib + NumPy")
+
 
 
